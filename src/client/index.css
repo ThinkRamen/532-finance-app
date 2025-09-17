@@ -1,0 +1,26 @@
+/* Smooth snap scrolling */
+html {
+	scroll-snap-type: y mandatory;
+	scroll-behavior: smooth;
+	overflow-y: scroll;
+}
+
+section {
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+}
+
+.pixel-border {
+	border: 4px solid #4ade80;
+	box-shadow: 8px 8px 0px rgba(74, 222, 128, 0.3);
+}
+
+.pixel-btn {
+	border: 3px solid #4ade80;
+	box-shadow: 4px 4px 0px rgba(74, 222, 128, 0.3);
+	transition: all 0.1s ease;
+}
+.pixel-btn:active {
+	transform: translate(2px, 2px);
+	box-shadow: 2px 2px 0px rgba(74, 222, 128, 0.3);
+}
