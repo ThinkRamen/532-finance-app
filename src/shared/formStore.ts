@@ -5,16 +5,13 @@ export interface FinancialData {
 	annualSalary: number
 	payFrequency: "weekly" | "bi-weekly" | "monthly"
 	calculatedPaycheck: number
-	investments?: number // 401k, IRA, brokerage accounts, etc.
-	liabilities?: number // mortgages, loans, credit card debt, etc.
 	expenses: number
 	projectionYears: number
 	needsPercent: number
 	wantsPercent: number
 	savingsPercent: number
-	investmentReturnRate: number
-	debtInterestRate: number
 	assets: Asset[]
+	liabilities: Liability[]
 }
 
 export interface Asset {
@@ -25,21 +22,26 @@ export interface Asset {
 	annualReturn: number
 }
 
+export interface Liability {
+	id: string
+	type: string
+	name: string
+	value: number
+	apr: number
+}
+
 export const [formData, setFormData] = createStore<FinancialData>({
 	hourlyRate: 0,
 	annualSalary: 0,
 	payFrequency: "bi-weekly",
 	calculatedPaycheck: 0,
-	investments: 0,
-	liabilities: 0,
 	expenses: 0,
 	projectionYears: 10,
 	needsPercent: 50,
 	wantsPercent: 30,
 	savingsPercent: 20,
-	investmentReturnRate: 0,
-	debtInterestRate: 0,
 	assets: [],
+	liabilities: [],
 })
 
 export const calculateAnnualFromHourly = (
@@ -117,11 +119,28 @@ export const addAsset = (asset: Omit<Asset, "id">) => {
 	setFormData("assets", [...formData.assets, newAsset])
 }
 
+export const addLiability = (liability: Omit<Liability, "id">) => {
+	const newLiability: Liability = {
+		id: Math.random().toString(36).substring(2, 9),
+		...liability,
+	}
+	setFormData("liabilities", [...formData.liabilities, newLiability])
+}
+
 export const updateAsset = (id: string, updates: Partial<Asset>) => {
 	setFormData(
 		"assets",
 		formData.assets.map((asset) =>
 			asset.id === id ? { ...asset, ...updates } : asset
+		)
+	)
+}
+
+export const updateLiability = (id: string, updates: Partial<Liability>) => {
+	setFormData(
+		"liabilities",
+		formData.liabilities.map((liability) =>
+			liability.id === id ? { ...liability, ...updates } : liability
 		)
 	)
 }
@@ -133,11 +152,14 @@ export const removeAsset = (id: string) => {
 	)
 }
 
+export const removeLiability = (id: string) => {
+	setFormData(
+		"liabilities",
+		formData.liabilities.filter((liability) => liability.id !== id)
+	)
+}
+
 // CALCULATE NETWORTH SAVINGS, ASSETS, INVESTMENTS +, LIABILITIES -
-export function calculateNetWorth(
-	assets: number,
-	investments: number,
-	liabilities: number
-) {
-	return assets + investments - liabilities
+export function calculateNetWorth(assets: number, liabilities: number) {
+	return assets - liabilities
 }

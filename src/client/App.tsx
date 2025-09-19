@@ -1,6 +1,7 @@
 import { IncomeSection } from '../client/components/IncomeSection'
 import { AssetsSection } from '../client/components/AssetsSection'
-import { formData, calculateBudgetBuckets } from '../shared/formStore'
+import { formData, calculateBudgetBuckets, removeAsset, removeLiability } from '../shared/formStore'
+import { LiabilitiesSection } from './components/LiailitiesSection';
 
 export default function App() {
 	const budgetBuckets = () => calculateBudgetBuckets(formData.calculatedPaycheck);
@@ -126,7 +127,8 @@ export default function App() {
 
 														{/* Remove Button */}
 														<button
-															class="pixel-btn bg-financial-red hover:bg-red-700 text-white rounded w-6 h-6 flex items-center justify-center ml-2 flex-shrink-0"
+															class="pixel-btn-red bg-financial-red hover:bg-red-700 text-white rounded w-6 h-6 flex items-center justify-center ml-2 flex-shrink-0"
+															onClick={() => removeAsset(asset.id)}
 															title="Remove asset"
 														>
 															×
@@ -140,7 +142,7 @@ export default function App() {
 														{asset.annualReturn}% RETURN
 													</div>
 													<div class="font-pixel text-financial-green text-sm">
-														${asset.value.toLocaleString()}
+														${asset.value.toFixed(2).toLocaleString()}
 													</div>
 												</div>
 											</div>
@@ -155,7 +157,7 @@ export default function App() {
 									<div class="flex justify-between items-center font-pixel">
 										<span class="text-financial-green">TOTAL ASSETS:</span>
 										<span class="text-xl text-financial-green">
-											${formData.assets.reduce((total, asset) => total + asset.value, 0).toLocaleString()}
+											${formData.assets.reduce((total, asset) => total + asset.value, 0).toFixed(2).toLocaleString()}
 										</span>
 									</div>
 									<div class="text-xs text-gray-400 font-pixel mt-2 text-center">
@@ -163,7 +165,7 @@ export default function App() {
 										Avg. Return: {(
 											formData.assets.reduce((total, asset) => total + asset.annualReturn, 0) /
 											formData.assets.length
-										).toFixed(1)}%
+										).toFixed(2)}%
 									</div>
 								</div>
 							)}
@@ -186,27 +188,85 @@ export default function App() {
 			<section class="min-h-screen flex flex-col items-center justify-center p-8 bg-gray-900" id="liabilities" >
 				<div>
 					<div class="flex flex-2 items-center justify-center p-8">
-						<SectionCard class='max-w-2xl'>
-							<AssetsSection></AssetsSection>
+						<SectionCard class='max-w-2xl pixel-border-red'>
+							<LiabilitiesSection></LiabilitiesSection>
 						</SectionCard>
 					</div>
 					<div class="flex flex-1 p-8 items-center justify-center h-full">
-						<SectionCard>
-							<h2>Saving Accounts</h2>
-						</SectionCard>
-						<SectionCard>
-							<h2>Checking Accounts</h2>
-						</SectionCard>
-						<SectionCard>
-							<h2>Investment Accounts</h2>
+						<SectionCard class="pixel-border-red">
+							<h2 class="text-xl text-financial-red mb-4">YOUR LIABILITIES</h2>
+							{/* Display Added Liabilities */}
+							<div class="py-4">
+								{formData.liabilities.length === 0 ? (
+									<p class="text-gray-400 text-center py-8">No liabilities added yet</p>
+								) : (
+									<div class="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Use grid for better layout */}
+										{formData.liabilities.map((liability) => (
+											<div class="pixel-border-red p-4 bg-gray-700 rounded flex flex-col justify-between min-h-[120px]">
+												{/* liability Info */}
+												<div class="flex-1">
+													<div class="flex justify-between items-start mb-2">
+														<div class="flex-1">
+															<div class="text-financial-red text-sm truncate" title={liability.name}>
+																{liability.name}
+															</div>
+															<div class="text-xs text-gray-400 uppercase">
+																{liability.type}
+															</div>
+														</div>
+
+														{/* Remove Button */}
+														<button
+															class="pixel-btn-red bg-financial-red hover:bg-red-700 text-white rounded w-6 h-6 flex items-center justify-center ml-2 flex-shrink-0"
+															onClick={() => removeLiability(liability.id)}
+															title="Remove asset"
+														>
+															×
+														</button>
+													</div>
+												</div>
+
+												{/* Asset Details */}
+												<div class="flex justify-between items-end pt-2 border-t border-gray-600">
+													<div class="text-xs font-pixel text-financial-red">
+														{liability.apr}% APR
+													</div>
+													<div class="text-sm">
+														${liability.value.toFixed(2).toLocaleString()}
+													</div>
+												</div>
+											</div>
+										))}
+									</div>
+								)}
+							</div>
+
+							{/* Total liabilities Summary */}
+							{formData.liabilities.length > 0 && (
+								<div class="pixel-border-red p-4 bg-gray-800 rounded mt-4">
+									<div class="flex justify-between items-center font-pixel">
+										<span class="text-financial-red">TOTAL LIABILITIES:</span>
+										<span class="text-xl">
+											${formData.liabilities.reduce((total, liability) => total + liability.value, 0).toFixed(2).toLocaleString()}
+										</span>
+									</div>
+									<div class="text-xs text-gray-400 font-pixel mt-2 text-center">
+										{formData.liabilities.length} asset{formData.liabilities.length !== 1 ? 's' : ''} •
+										Avg. Return: {(
+											formData.liabilities.reduce((total, liability) => total + liability.apr, 0) /
+											formData.liabilities.length
+										).toFixed(2)}%
+									</div>
+								</div>
+							)}
 						</SectionCard>
 					</div>
 					<div class="flex justify-center">
 						<button
-							class="pixel-btn px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg"
-							onClick={() => document.getElementById('liabilities')?.scrollIntoView({ behavior: 'smooth' })}
+							class="pixel-btn-red px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg"
+							onClick={() => document.getElementById('fooo')?.scrollIntoView({ behavior: 'smooth' })}
 						>
-							Next: Liabilities
+							Next: Financial Order of Operations
 						</button>
 					</div>
 				</div>
@@ -216,9 +276,9 @@ export default function App() {
 			{/* SNAPSHOT */}
 
 			{/* FINANCIAL ORDER OF OPERATIONS SECTION*/}
-			<section class="min-h-screen flex flex-col items-center justify-center p-8 bg-gray-900" id="liabilities" >
+			<section class="min-h-screen flex flex-col items-center justify-center p-8 bg-gray-900" id="fooo" >
 				<div class="flex flex-2 items-center justify-center p-8">
-					<SectionCard>
+					<SectionCard class="max-w-2xl">
 						<div class="financial-card">
 							<h1 class="text-3xl font-pixel text-financial-green mb-6 text-center">
 								FINANCIAL ORDER OF OPERATIONS
@@ -273,9 +333,9 @@ export default function App() {
 						<div class="flex justify-center">
 							<button
 								class="pixel-btn px-6 py-3 my-3 bg-green-600 hover:bg-green-700 text-white rounded-lg"
-								onClick={() => document.getElementById('liabilities')?.scrollIntoView({ behavior: 'instant' })}
+								onClick={() => document.getElementById('')?.scrollIntoView({ behavior: 'smooth' })}
 							>
-								Next: Liabilities
+								Next
 							</button>
 						</div>
 					</SectionCard>
