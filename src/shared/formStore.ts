@@ -1,4 +1,5 @@
 import { createStore } from "solid-js/store"
+import { makePersisted } from "@solid-primitives/storage"
 
 export interface FinancialData {
 	hourlyRate: number
@@ -30,19 +31,22 @@ export interface Liability {
 	apr: number
 }
 
-export const [formData, setFormData] = createStore<FinancialData>({
-	hourlyRate: 0,
-	annualSalary: 0,
-	payFrequency: "bi-weekly",
-	calculatedPaycheck: 0,
-	expenses: 0,
-	projectionYears: 10,
-	needsPercent: 50,
-	wantsPercent: 30,
-	savingsPercent: 20,
-	assets: [],
-	liabilities: [],
-})
+export const [formData, setFormData] = makePersisted(
+	createStore<FinancialData>({
+		hourlyRate: 0,
+		annualSalary: 0,
+		payFrequency: "bi-weekly",
+		calculatedPaycheck: 0,
+		expenses: 0,
+		projectionYears: 10,
+		needsPercent: 50,
+		wantsPercent: 30,
+		savingsPercent: 20,
+		assets: [],
+		liabilities: [],
+	}),
+	{ name: "userStore", storage: localStorage }
+)
 
 export const calculateAnnualFromHourly = (
 	hourlyRate: number,
