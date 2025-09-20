@@ -45,7 +45,7 @@ export const [formData, setFormData] = makePersisted(
 		assets: [],
 		liabilities: [],
 	}),
-	{ name: "userStore", storage: localStorage }
+	{ name: "userData", storage: localStorage }
 )
 
 export const calculateAnnualFromHourly = (
@@ -79,11 +79,17 @@ export const calculatePaycheck = (
 }
 
 // CALCUATE BUDGET BUCKETS BASED ON 50/30/20 RULE
-export function calculateBudgetBuckets(calculatedPaycheck: number) {
-	const needs = calculatedPaycheck * 0.5 * 0.8
-	const wants = calculatedPaycheck * 0.3 * 0.8
-	const savings = calculatedPaycheck * 0.2 * 0.8
-	return { needs, wants, savings }
+export function calculateBudgetBuckets() {
+	const needs = formData.calculatedPaycheck * 0.5 * 0.8
+	const wants = formData.calculatedPaycheck * 0.3 * 0.8
+	const savings = formData.calculatedPaycheck * 0.2 * 0.8
+
+	const monthly = formData.annualSalary / 12
+	const afterTax = monthly * 0.8
+	const needsMonthly = afterTax * 0.5
+	const wantsMonthly = afterTax * 0.3
+	const savingsMonthly = afterTax * 0.2
+	return { needs, wants, savings, needsMonthly, wantsMonthly, savingsMonthly }
 }
 
 // HELPER TO UPDATE BOTH FIELDS WHEN ONE CHANGES

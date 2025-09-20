@@ -40,3 +40,19 @@ section {
 	transform: translate(2px, 2px);
 	box-shadow: 2px 2px 0px rgba(255, 44, 44, 0.3);
 }
+
+.pixel-border-blue {
+	border: 4px solid #3b82f6;
+	box-shadow: 8px 8px 0px rgba(59, 130, 246, 0.3);
+}
+
+.pixel-btn-blue {
+	border: 3px solid #3b82f6;
+	box-shadow: 4px 4px 0px rgba(59, 130, 246, 0.3);
+	transition: all 0.1s ease;
+}
+
+.pixel-btn-blue:active {
+	transform: translate(2px, 2px);
+	box-shadow: 2px 2px 0px rgba(59, 130, 246, 0.3);
+}
