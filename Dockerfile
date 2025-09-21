@@ -16,6 +16,6 @@ COPY . .
 FROM base AS prod
 COPY --from=prerelease /app .
 RUN bun run build
-EXPOSE 80
+EXPOSE 3000
 RUN bun add -g serve
-CMD ["serve", "-s", "dist", "-l", "80"]
+CMD ["serve", "-s", "dist", "-l", "3000"]
