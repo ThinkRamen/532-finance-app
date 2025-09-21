@@ -1,8 +1,9 @@
 services:
   app:
     build: .
+    image: 532financeappacr.azurecr.io/532-finance-app:latest
     ports:
-      - "3000:3000"
+      - "80:80"
     environment:
       - DATABASE_URL=postgresql://postgres:password@db:5432/532-networth-app
       - CHOKIDAR_USEPOLLING=true

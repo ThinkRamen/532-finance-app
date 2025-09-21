@@ -12,8 +12,10 @@ FROM base AS prerelease
 COPY --from=install /temp/dev/node_modules /node_modules
 COPY . .
 
-# DEVELOPMENT IMAGE
-FROM base AS dev
+# BUILD AND SERVE
+FROM base AS prod
 COPY --from=prerelease /app .
-EXPOSE 3000
-CMD ["bun", "run", "dev"]
+RUN bun run build
+EXPOSE 80
+RUN bun add -g serve
+CMD ["serve", "-s", "dist", "-l", "80"]
