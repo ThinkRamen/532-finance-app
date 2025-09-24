@@ -5,14 +5,14 @@ import UnoCSS from "unocss/vite"
 export default defineConfig({
 	plugins: [solidPlugin(), UnoCSS()],
 	server: {
-		port: 3001,
+		port: 3000,
 		host: true,
 		watch: {
 			usePolling: true,
-			interval: 1000,
+			interval: 100,
 		},
 		hmr: {
-			clientPort: 3001,
+			clientPort: 3000,
 		},
 	},
 	build: {

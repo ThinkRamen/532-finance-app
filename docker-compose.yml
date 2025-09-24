@@ -8,14 +8,19 @@ services:
       - "443:443"
       - "81:81" # Admin web UI
     volumes:
-      - ./data/npm/data:/data
-      - ./data/npm/letsencrypt:/etc/letsencrypt
+      - ./src/server/nginx/data:/data
+      - ./src/server/nginx/letsencrypt:/etc/letsencrypt
     depends_on:
       - app
+    networks:
+      - web_proxy
   app:
     build: .
-    ports:
-      - "3000:3000"
+    container_name: 532-finance-app
+    image: 532-finance-app:latest
+    restart: unless-stopped
+    networks:
+      - web_proxy
     environment:
       - DATABASE_URL=postgresql://postgres:password@db:5432/532-networth-app
       - CHOKIDAR_USEPOLLING=true
@@ -28,11 +33,6 @@ services:
       - /app/node_modules
     stdin_open: true
     tty: true
-    develop:
-      watch:
-        - action: sync
-          path: .
-          target: /app
   db:
     image: postgres:15
     environment:
@@ -48,6 +48,8 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-
+networks:
+  web_proxy:
+    driver: bridge
 volumes:
   postgres_data:

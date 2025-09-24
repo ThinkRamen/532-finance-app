@@ -12,7 +12,6 @@ export default function App() {
 		<>
 			{/* WELCOME SECTION */}
 			<WelcomeSection />
-
 			{/* <!-- INCOME INPUT SECTION --> */}
 			<section class="min-h-screen flex flex-col p-8 bg-gray-900" id="income">
 				<div class="flex flex-2 items-center justify-center p-8">
