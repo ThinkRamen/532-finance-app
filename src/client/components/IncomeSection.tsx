@@ -20,14 +20,14 @@ export const IncomeSection = () => {
     return (
         <>
             <section class="flex p-8 bg-gray-900" id="income">
-                <div class="flex grow-5 items-center justify-center">
+                <div class="flex items-center justify-center">
                     <SectionCard>
-                        <h1 class='text-2xl font-bold text-green-400 mb-4'>
+                        <h1 class='font-bold text-green-400 mb-4'>
                             INCOME DETAILS
                         </h1>
                         {/* HOURLY RATE INPUT */}
                         <div>
-                            <label for="hourlyRate" class="text-sm text-gray-300 mb-2">Hourly Rate</label>
+                            <label for="hourlyRate" class="text-xs text-gray-300 mb-2">Hourly Rate</label>
                             <input
                                 type="number"
                                 id="hourlyRate"
@@ -40,11 +40,11 @@ export const IncomeSection = () => {
                             />
                         </div>
                         <div class="items-center justify-center flex">
-                            <span class='text-sm text-gray-300 mb-2'>OR</span>
+                            <span class='text-xs text-gray-300 mb-2'>OR</span>
                         </div>
                         {/* ANNUAL SALARY INPUT */}
                         <div>
-                            <label for="annualSalary" class="text-sm text-gray-300 mb-2">Annual Salary</label>
+                            <label for="annualSalary" class="text-xs text-gray-300 mb-2">Annual Salary</label>
                             <input
                                 type="number"
                                 id="annualSalary"
@@ -58,7 +58,7 @@ export const IncomeSection = () => {
                         </div>
                         {/* Pay Frequency Select */}
                         <div class="py-4">
-                            <label for="payFrequency" class="text-sm text-gray-300 mb-2">Pay Frequency</label>
+                            <label for="payFrequency" class="text-xs text-gray-300 mb-2">Pay Frequency</label>
                             <select
                                 id="payFrequency"
                                 value={formData.payFrequency}
@@ -77,7 +77,7 @@ export const IncomeSection = () => {
                                 <span class="text-2xl  text-financial-green">
                                     ${paycheckDisplay().toFixed(2)}
                                 </span>
-                                <p class="text-sm text-gray-400 mt-1">
+                                <p class="text-xs text-gray-400 mt-1">
                                     per {formData.payFrequency.replace('-', ' ').toLowerCase()}
                                 </p>
                             </div>
@@ -99,23 +99,23 @@ export const IncomeSection = () => {
                         <SectionCard>
                             {/* NEEDS BUDGET CONTENT */}
                             <h2 class="text-md text-financial-red">NEEDS (50%)</h2>
-                            <p class="text-sm"> per paycheck ${calculateBudgetBuckets().needs.toFixed(2)} </p>
-                            <p class="text-sm"> per month ${(formData.annualSalary / 12 * .5 * .8).toFixed(2)} </p>
-                            <p class="text-sm"> per year ${(formData.annualSalary * .5 * .8).toFixed(2)} </p>
+                            <p class="text-xs"> per paycheck ${calculateBudgetBuckets().needs.toFixed(2)} </p>
+                            <p class="text-xs"> per month ${(formData.annualSalary / 12 * .5 * .8).toFixed(2)} </p>
+                            <p class="text-xs"> per year ${(formData.annualSalary * .5 * .8).toFixed(2)} </p>
                         </SectionCard>
                         <SectionCard>
                             {/* WANTS BUDGET CONTENT */}
                             <h2 class="text-md text-financial-blue">WANTS (30%)</h2>
-                            <p class="text-sm"> per paycheck ${calculateBudgetBuckets().wants.toFixed(2)} </p>
-                            <p class="text-sm"> per month ${(formData.annualSalary / 12 * .3 * .8).toFixed(2)} </p>
-                            <p class="text-sm"> per year ${(formData.annualSalary * .3 * .8).toFixed(2)} </p>
+                            <p class="text-xs"> per paycheck ${calculateBudgetBuckets().wants.toFixed(2)} </p>
+                            <p class="text-xs"> per month ${(formData.annualSalary / 12 * .3 * .8).toFixed(2)} </p>
+                            <p class="text-xs"> per year ${(formData.annualSalary * .3 * .8).toFixed(2)} </p>
                         </SectionCard>
                         <SectionCard>
                             {/* SAVINGS BUDGET CONTENT */}
                             <h2 class="text-md text-financial-green">SAVINGS (20%)</h2>
-                            <p class="text-sm"> per paycheck ${calculateBudgetBuckets().savings.toFixed(2)} </p>
-                            <p class="text-sm"> per month ${(formData.annualSalary / 12 * .2 * .8).toFixed(2)} </p>
-                            <p class="text-sm"> per year ${(formData.annualSalary * .2 * .8).toFixed(2)} </p>
+                            <p class="text-xs"> per paycheck ${calculateBudgetBuckets().savings.toFixed(2)} </p>
+                            <p class="text-xs"> per month ${(formData.annualSalary / 12 * .2 * .8).toFixed(2)} </p>
+                            <p class="text-xs"> per year ${(formData.annualSalary * .2 * .8).toFixed(2)} </p>
                         </SectionCard>
                     </div>
                 </div>
