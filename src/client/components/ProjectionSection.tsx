@@ -1,6 +1,7 @@
 import { SectionCard } from './SectionCard';
 import { createMemo } from 'solid-js';
 import { calculateBudgetBuckets, formData } from '../../shared/formStore';
+import PixelArtDonutPie from './Donut';
 
 const projectionData = createMemo(() => {});
 
@@ -45,6 +46,7 @@ export const ProjectionSection = () => {
 					<h3 class='text-lg font-semibold text-green-400 mb-2'>Projected Net Worth Over Time</h3>
 					<div class='h-64 bg-gray-700 flex items-center justify-center text-gray-400'>
 						<GenerateProjecionTable />
+						<PixelArtDonutPie percentage={65} size={120} strokeWidth={18} color='#d43f3a' />
 					</div>
 				</div>
 			</SectionCard>

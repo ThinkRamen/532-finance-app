@@ -6,8 +6,7 @@ export const WelcomeSection = () => {
 			<div class='flex flex-1 items-center justify-center'>
 				<SectionCard>
 					<h1 class='font-bold text-green-400 mb-4'>$$$ 532 NET WORTH PROJECTION</h1>
-					<h2 class='font-semibold mb-4 text-gray-300 text-xl'>Start Building Your Financial Future!!!</h2>
-					<h3 class='font-semibold text-gray-400 text-lg mb-4'>Welcome To Your Financial Dashboard :)</h3>
+					<h2 class='font-semibold text-gray-400 mb-4'>Welcome To Your Financial Dashboard :)</h2>
 					<div class='p-4 rounded-lg text-center'>
 						<p class='text-gray-400 mb-8'>
 							This app will help you visualize and plan your net worth growth using the 50/30/20 budgeting
@@ -17,7 +16,7 @@ export const WelcomeSection = () => {
 						</p>
 						<div class='flex flex-col justify-center items-center'>
 							<button
-								class='pixel-btn py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg mb-2 w-full text-2xl'
+								class='pixel-btn py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg mb-2 w-full text-xl'
 								onClick={() =>
 									document.getElementById('income')?.scrollIntoView({ behavior: 'smooth' })
 								}
@@ -25,7 +24,7 @@ export const WelcomeSection = () => {
 								Get Started
 							</button>
 							<span class='py-2 text-gray-400'>OR</span>
-							<button class='pixel-btn py-3 bg-gray-800 hover:bg-gray-900 text-white rounded-lg w-full text-2xl'>
+							<button class='pixel-btn py-3 bg-gray-800 hover:bg-gray-900 text-white rounded-lg w-full text-xl'>
 								Login
 							</button>
 						</div>
