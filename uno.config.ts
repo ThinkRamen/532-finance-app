@@ -3,6 +3,7 @@ import {
 	presetWind4,
 	presetAttributify,
 	presetIcons,
+	transformerDirectives,
 } from "unocss"
 
 export default defineConfig({
@@ -15,6 +16,7 @@ export default defineConfig({
 		presetAttributify(),
 		presetIcons(),
 	],
+	transformers: [transformerDirectives()],
 	theme: {
 		colors: {
 			financial: {
