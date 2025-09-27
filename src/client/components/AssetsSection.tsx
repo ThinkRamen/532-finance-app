@@ -36,14 +36,14 @@ export const AssetsSection = () => {
 
     return (
         <section class="flex flex-col p-8 bg-gray-900" id="assets" >
-            <div class="flex items-center justify-center">
+            <div class="flex flex-1 items-center justify-center">
                 <SectionCard>
-                    <h1 class='text-2xl font-bold text-green-400 mb-4'>
+                    <h1 class='font-bold text-green-400 mb-4'>
                         ASSET DETAILS
                     </h1>
-                    <h2 class="text-lg mb-4">LIQUID ASSETS</h2>
-                    <div>
-                        <label for="accountName" class="text-sm text-gray-300 mb-2">Account Name</label>
+                    <h2 class="mb-4">LIQUID ASSETS</h2>
+                    <div class="mb-4">
+                        <label for="accountName" class="text-gray-300">Account Name</label>
                         <input
                             type="string"
                             id="accountName"
@@ -53,8 +53,19 @@ export const AssetsSection = () => {
                             placeholder="US Bank"
                         />
                     </div>
-                    <div>
-                        <label for="accountType" class="text-sm text-gray-300 mb-2">Account Type</label>
+                    <div class="mb-4">
+                        <label for="accountValue" class="text-gray-300 mb-2">Account Value</label>
+                        <input
+                            type="string"
+                            id="accountValue"
+                            value={newAsset().value || ''}
+                            onChange={(e) => setNewAsset({ ...newAsset(), value: parseFloat(e.target.value) })}
+                            class="pixel-border w-full p-2 bg-gray-700 rounded pl-8"
+                            placeholder="$1,000"
+                        />
+                    </div>
+                    <div class="mb-4">
+                        <label for="accountType" class="text-gray-300 mb-2">Account Type</label>
                         <select
                             value={newAsset().type}
                             onChange={(e) => setNewAsset({ ...newAsset(), type: e.target.value })}
@@ -69,30 +80,18 @@ export const AssetsSection = () => {
                             <option value="other">Other Asset</option>
                         </select>
                     </div>
-                    <div>
-                        <label for="annualReturn" class="text-sm text-gray-300 mb-2">Annual Return</label>
-                        <input
-                            type="number"
-                            id="annualReturn"
-                            value={newAsset().annualReturn}
-                            onChange={(e) => setNewAsset({ ...newAsset(), annualReturn: parseFloat(e.target.value) })}
-                            class="pixel-border w-full p-2 bg-gray-700 rounded pl-8"
-                            placeholder="2.00%"
-                            step="1"
-                            min="0.00"
-                        />
-                    </div>
-
                     <div class='flex flex-col'>
-                        <label for="accountValue" class="text-sm text-gray-300 mb-2">Account Value</label>
+                        <label for="annualReturn" class="text-gray-300 mb-2">Annual Return</label>
                         <div class="flex">
                             <input
-                                type="string"
-                                id="accountValue"
-                                value={newAsset().value || ''}
-                                onChange={(e) => setNewAsset({ ...newAsset(), value: parseFloat(e.target.value) })}
+                                type="number"
+                                id="annualReturn"
+                                value={newAsset().annualReturn}
+                                onChange={(e) => setNewAsset({ ...newAsset(), annualReturn: parseFloat(e.target.value) })}
                                 class="pixel-border w-full p-2 bg-gray-700 rounded pl-8"
-                                placeholder="$1,000"
+                                placeholder="2.00%"
+                                step="1"
+                                min="0.00"
                             />
                             <button class="pixel-btn bg-green-600 hover:bg-green-700 text-white rounded-lg px-6 ml-2"
                                 onClick={handleAddAsset}
@@ -103,7 +102,7 @@ export const AssetsSection = () => {
                     </div>
                 </SectionCard>
             </div>
-            <div class="flex flex-1 items-center justify-center">
+            <div class="flex flex-1 flex-col items-center justify-center gap-8">
                 <SectionCard>
                     <h2 class='text-lg font-bold text-green-400 mb-4'>YOUR ASSETS</h2>
 
@@ -172,14 +171,14 @@ export const AssetsSection = () => {
                         </div>
                     )}
                 </SectionCard>
-            </div>
-            <div class="flex justify-center">
-                <button
-                    class="pixel-btn px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg"
-                    onClick={() => document.getElementById('liabilities')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                    Next: Liabilities
-                </button>
+                <div class="flex justify-center">
+                    <button
+                        class="pixel-btn px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg w-full"
+                        onClick={() => document.getElementById('liabilities')?.scrollIntoView({ behavior: 'smooth' })}
+                    >
+                        Next: Liabilities
+                    </button>
+                </div>
             </div>
         </section >
     )

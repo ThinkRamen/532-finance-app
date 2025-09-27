@@ -5,6 +5,22 @@
 	font-style: normal;
 }
 
+h1 {
+	@apply text-2xl;
+}
+
+h2 {
+	@apply text-xl;
+}
+
+h3 {
+	@apply text-lg;
+}
+
+body {
+	@apply text-base;
+}
+
 /* Smooth snap scrolling */
 html {
 	scroll-snap-type: y mandatory;
@@ -15,7 +31,9 @@ html {
 
 body {
 	margin: 0;
-	font-family: 'Press Start 2P', monospace;
+	/* font-family: "Press Start 2P", monospace; */
+	font-family: 'Press Start 2P', system-ui;
+	font-optical-sizing: auto;
 	background-color: #0f172a;
 	color: #e2e8f0;
 	image-rendering: pixelated;
