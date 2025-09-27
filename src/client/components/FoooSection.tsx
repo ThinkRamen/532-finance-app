@@ -3,7 +3,7 @@ import { calculateBudgetBuckets } from '../../shared/formStore';
 
 export const FoooSection = () => {
     return (
-        <section class="min-h-screen flex flex-col items-center justify-center p-8 bg-gray-900" id="fooo" >
+        <section class="flex flex-col items-center justify-center p-8 bg-gray-900" id="fooo" >
             <div class="flex items-center justify-center p-8 ">
                 <SectionCard class='overflow-y-scroll max-h-[90dvh]'>
                     <h1 class="text-2xl font-bold text-green-400 mb-4">
