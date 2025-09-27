@@ -11,10 +11,12 @@
 	},
 	"private": true,
 	"devDependencies": {
+		"@alexanderniebuhr/prettier-plugin-unocss": "^0.0.4",
 		"@paralleldrive/cuid2": "^2.2.2",
 		"@types/bun": "latest",
 		"@unocss/preset-wind4": "^66.5.1",
 		"drizzle-kit": "^0.31.4",
+		"prettier": "^3.6.2",
 		"unocss": "^66.5.1",
 		"vite": "^7.1.5",
 		"vite-plugin-solid": "^2.11.8"
