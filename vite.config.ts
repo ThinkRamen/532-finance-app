@@ -1,6 +1,6 @@
-import { defineConfig } from "vite"
-import solidPlugin from "vite-plugin-solid"
-import UnoCSS from "unocss/vite"
+import { defineConfig } from 'vite';
+import solidPlugin from 'vite-plugin-solid';
+import UnoCSS from 'unocss/vite';
 
 export default defineConfig({
 	plugins: [solidPlugin(), UnoCSS()],
@@ -9,13 +9,13 @@ export default defineConfig({
 		host: true,
 		watch: {
 			usePolling: true,
-			interval: 100,
+			interval: 100
 		},
 		hmr: {
-			clientPort: 3000,
-		},
+			clientPort: 3000
+		}
 	},
 	build: {
-		target: "esnext",
-	},
-})
+		target: 'esnext'
+	}
+});
