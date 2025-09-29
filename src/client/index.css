@@ -1,6 +1,6 @@
 @font-face {
-	font-family: "Press Start 2P";
-	src: url("/public/fonts/PressStart2P-Regular.ttf") format("truetype");
+	font-family: 'Press Start 2P';
+	src: url('/public/fonts/PressStart2P-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -10,11 +10,12 @@ html {
 	scroll-snap-type: y mandatory;
 	scroll-behavior: smooth;
 	overflow-y: scroll;
+	font-size: clamp(0.5rem, calc(1vw + 0.5rem), 5rem);
 }
 
 body {
 	margin: 0;
-	font-family: "Press Start 2P", monospace;
+	font-family: 'Press Start 2P', monospace;
 	background-color: #0f172a;
 	color: #e2e8f0;
 	image-rendering: pixelated;
@@ -23,11 +24,16 @@ body {
 	overflow-x: clip;
 }
 
+#root {
+	height: 100dvh;
+	width: 100dvw;
+}
+
 section {
 	scroll-snap-align: start;
 	scroll-snap-stop: always;
-	height: 100dvh;
-	width: 100dvw;
+	height: 100%;
+	width: auto;
 }
 
 .pixel-border {
