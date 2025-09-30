@@ -1,55 +1,40 @@
 services:
-  nginx-proxy-manager:
-    image: jc21/nginx-proxy-manager:latest
-    container_name: nginx-proxy-manager
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-      - "81:81" # Admin web UI
-    volumes:
-      - ./src/server/nginx/data:/data
-      - ./src/server/nginx/letsencrypt:/etc/letsencrypt
-    depends_on:
-      - app
-    networks:
-      - web_proxy
-  app:
-    build: .
-    container_name: 532-finance-app
-    image: 532-finance-app:latest
-    restart: unless-stopped
-    networks:
-      - web_proxy
-    environment:
-      - DATABASE_URL=postgresql://postgres:password@db:5432/532-networth-app
-      - CHOKIDAR_USEPOLLING=true
-      - WATCHPACK_USEPOLLING=true
-    depends_on:
-      db:
-        condition: service_healthy
-    volumes:
-      - .:/app
-      - /app/node_modules
-    stdin_open: true
-    tty: true
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: 532-networth-app
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+    app:
+        build: .
+        container_name: 532-finance-app
+        image: 532-finance-app:latest
+        restart: unless-stopped
+        networks:
+            - web_proxy
+        environment:
+            - DATABASE_URL=postgresql://postgres:password@db:5432/532-networth-app
+            - CHOKIDAR_USEPOLLING=true
+            - WATCHPACK_USEPOLLING=true
+        depends_on:
+            db:
+                condition: service_healthy
+        volumes:
+            - .:/app
+            - /app/node_modules
+        stdin_open: true
+        tty: true
+    db:
+        image: postgres:15
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: 532-networth-app
+        ports:
+            - '5432:5432'
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        healthcheck:
+            test: ['CMD-SHELL', 'pg_isready -U postgres']
+            interval: 5s
+            timeout: 5s
+            retries: 5
 networks:
-  web_proxy:
-    driver: bridge
+    web_proxy:
+        external: true
 volumes:
-  postgres_data:
+    postgres_data:

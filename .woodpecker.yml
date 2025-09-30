@@ -1,0 +1,13 @@
+pipeline:
+    build:
+        image: docker:latest
+        commands:
+            - echo "Building finance app..."
+            - docker-compose build --no-cache
+            - docker-compose up -d
+workflow:
+    build_on_push:
+        when:
+            event: push
+        steps:
+            - build
