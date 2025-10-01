@@ -1,10 +1,8 @@
+# .woodpecker.yml
 steps:
-    build:
-        image: woodpeckerci/plugin-docker-buildx
-        settings:
-            dockerfile: Dockerfile
-            repo: your-repo-name
-            tags: latest
-        when:
-            event: push
-            branch: main
+    build-and-run:
+        image: docker/compose:latest # Use a Docker Compose image
+        commands:
+            - docker compose build # Build the services defined in docker-compose.yml
+            - docker compose up -d # Start the services in detached mode
+            - docker compose ps # Verify the running services
