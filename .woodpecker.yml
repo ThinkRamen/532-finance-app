@@ -1,8 +1,12 @@
-# .woodpecker.yml
 steps:
-    build-and-run:
-        image: docker:latest
+    build:
+        image: docker:dind
         commands:
-            - docker compose build # Build the services defined in docker-compose.yml
-            - docker compose up -d # Start the services in detached mode
-            - docker compose ps # Verify the running services
+            - dockerd &
+            - sleep 5 # Wait for daemon to start
+            - echo "Building finance app..."
+            - docker compose build --no-cache
+            - docker compose up -d
+        when:
+            event: push
+            branch: main
