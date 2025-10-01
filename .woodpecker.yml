@@ -1,7 +1,7 @@
 # .woodpecker.yml
 steps:
     build-and-run:
-        image: docker/compose:latest # Use a Docker Compose image
+        image: docker:latest
         commands:
             - docker compose build # Build the services defined in docker-compose.yml
             - docker compose up -d # Start the services in detached mode
