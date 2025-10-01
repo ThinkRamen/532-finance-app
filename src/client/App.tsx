@@ -1,9 +1,9 @@
-import { IncomeSection } from '../client/components/IncomeSection';
 import { AssetsSection } from '../client/components/AssetsSection';
-import { LiabilitiesSection } from './components/LiailitiesSection';
-import { WelcomeSection } from './components/WelcomeSection';
+import { IncomeSection } from '../client/components/IncomeSection';
 import { FoooSection } from './components/FoooSection';
+import { LiabilitiesSection } from './components/LiailitiesSection';
 import { ProjectionSection } from './components/ProjectionSection';
+import { WelcomeSection } from './components/WelcomeSection';
 
 export default function App() {
 	return (
