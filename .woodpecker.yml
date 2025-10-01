@@ -1,12 +1,10 @@
 steps:
     build:
-        image: docker:latest
-        volumes:
-            - /var/run/docker.sock:/var/run/docker.sock
-            - .:/workspace
-        commands:
-            - echo "Building finance app..."
-            - docker-compose build --no-cache
-            - docker-compose up -d
+        image: woodpeckerci/plugin-docker-buildx
+        settings:
+            dockerfile: Dockerfile
+            repo: your-repo-name
+            tags: latest
         when:
             event: push
+            branch: main

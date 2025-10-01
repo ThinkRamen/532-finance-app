@@ -23,7 +23,7 @@ body {
 
 /* Smooth snap scrolling */
 html {
-	font-size: clamp(0.5rem, calc(1vw + 0.35rem), 1rem);
+	font-size: clamp(0.75rem, calc(1vw + 0.35rem), 1rem);
 }
 
 body {
