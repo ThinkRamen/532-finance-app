@@ -1,12 +1,12 @@
-import { SectionCard } from './SectionCard';
 import { calculateBudgetBuckets } from '../../shared/formStore';
+import { SectionCard } from './SectionCard';
 
 export const FoooSection = () => {
 	return (
-		<section class='flex p-8 bg-gray-900' id='fooo'>
+		<section class='flex p-8 bg-gray-900 items-center justify-center' id='fooo'>
 			<div class='flex flex-col justify-center'>
 				<div class='flex flex-col items-center justify-center space-y-4'>
-					<SectionCard class='overflow-y-scroll max-h-xl'>
+					<SectionCard class='overflow-y-scroll max-h-xl lg:max-h-3xl'>
 						<h1 class='text-2xl font-bold text-green-400 mb-4'>FINANCIAL ORDER OF OPERATIONS</h1>
 						{/* Enhanced Priority Flow */}
 						<div class='bg-gray-900/50 p-6 rounded-lg border pixel-border mb-8 '>

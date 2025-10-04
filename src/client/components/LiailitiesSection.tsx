@@ -1,5 +1,5 @@
-import { formData, addLiability, removeLiability } from '../../shared/formStore';
 import { createSignal } from 'solid-js';
+import { addLiability, formData, removeLiability } from '../../shared/formStore';
 import { SectionCard } from './SectionCard';
 
 export const LiabilitiesSection = () => {
@@ -34,9 +34,9 @@ export const LiabilitiesSection = () => {
 	};
 
 	return (
-		<section class='flex p-8 bg-gray-900' id='liabilities'>
+		<section class='flex p-8 bg-gray-900 items-center justify-center' id='liabilities'>
 			<div class='flex flex-col'>
-				<div class='flex flex-col items-center justify-center'>
+				<div class='flex flex-col'>
 					<SectionCard class='pixel-border-red'>
 						<h1 class='font-bold text-red-400 mb-4'>LIABILITIES DETAILS</h1>
 						<h2 class='mb-4'>

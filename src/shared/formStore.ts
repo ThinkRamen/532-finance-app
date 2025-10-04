@@ -1,5 +1,5 @@
-import { createStore } from 'solid-js/store';
 import { makePersisted } from '@solid-primitives/storage';
+import { createStore } from 'solid-js/store';
 
 export interface FinancialData {
 	hourlyRate: number;
@@ -11,6 +11,7 @@ export interface FinancialData {
 	needsPercent: number;
 	wantsPercent: number;
 	savingsPercent: number;
+	safetyNet: number;
 	assets: Asset[];
 	liabilities: Liability[];
 }
@@ -42,6 +43,7 @@ export const [formData, setFormData] = makePersisted(
 		needsPercent: 50,
 		wantsPercent: 30,
 		savingsPercent: 20,
+		safetyNet: 0,
 		assets: [],
 		liabilities: []
 	}),
@@ -80,6 +82,9 @@ export function calculateBudgetBuckets() {
 	const needsMonthly = afterTax * 0.5;
 	const wantsMonthly = afterTax * 0.3;
 	const savingsMonthly = afterTax * 0.2;
+	setFormData({
+		safetyNet: needsMonthly
+	});
 	return { needs, wants, savings, needsMonthly, wantsMonthly, savingsMonthly };
 }
 

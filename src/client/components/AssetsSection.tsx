@@ -1,5 +1,5 @@
-import { formData, addAsset, removeAsset } from '../../shared/formStore';
 import { createSignal } from 'solid-js';
+import { addAsset, formData, removeAsset } from '../../shared/formStore';
 import { SectionCard } from './SectionCard';
 
 export const AssetsSection = () => {
@@ -34,9 +34,9 @@ export const AssetsSection = () => {
 	};
 
 	return (
-		<section class='flex p-8 bg-gray-900' id='assets'>
+		<section class='flex p-8 bg-gray-900 items-center justify-center' id='assets'>
 			<div class='flex flex-col'>
-				<div class='flex flex-col items-center justify-center'>
+				<div class='flex flex-col'>
 					<SectionCard>
 						<h1 class='font-bold text-green-400 mb-4'>ASSET DETAILS</h1>
 						<h2 class='mb-4'>

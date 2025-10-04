@@ -1,5 +1,5 @@
-import { formData, updateIncomeData, updatePayFrequency, calculateBudgetBuckets } from '../../shared/formStore';
 import { createMemo } from 'solid-js';
+import { calculateBudgetBuckets, formData, updateIncomeData, updatePayFrequency } from '../../shared/formStore';
 import { SectionCard } from './SectionCard';
 
 export const IncomeSection = () => {
@@ -149,9 +149,9 @@ export const IncomeSection = () => {
 								<h3>${(formData.annualSalary * 0.2 * 0.8).toFixed(2)}</h3>
 							</div>
 						</SectionCard>
-						<div class='flex justify-center w-full'>
+						<div class='flex justify-center'>
 							<button
-								class='pixel-btn px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg w-full'
+								class='pixel-btn px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg'
 								onClick={() =>
 									document.getElementById('assets')?.scrollIntoView({ behavior: 'smooth' })
 								}

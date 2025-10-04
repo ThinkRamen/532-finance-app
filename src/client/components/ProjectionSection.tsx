@@ -1,6 +1,6 @@
-import { SectionCard } from './SectionCard';
 import { createMemo } from 'solid-js';
 import { calculateBudgetBuckets, formData } from '../../shared/formStore';
+import { SectionCard } from './SectionCard';
 
 const projectionData = createMemo(() => {});
 
@@ -46,6 +46,7 @@ export const ProjectionSection = () => {
 					<div class='h-64 bg-gray-700 flex items-center justify-center text-gray-400'>
 						<GenerateProjecionTable />
 					</div>
+					<h1>{formData.safetyNet}</h1>
 				</div>
 			</SectionCard>
 		</section>
