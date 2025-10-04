@@ -6,8 +6,6 @@ export const WelcomeSection = () => {
 			<div class='flex flex-1 items-center justify-center'>
 				<SectionCard>
 					<h1 class='font-bold text-green-400 mb-4'>$$$ 532 NET WORTH PROJECTION</h1>
-					<p>obvious change</p>
-
 					<h2 class='font-semibold text-gray-400 mb-4'>Welcome To Your Financial Dashboard :)</h2>
 					<div class='p-4 rounded-lg text-center'>
 						<p class='text-gray-400 mb-8'>
@@ -18,7 +16,7 @@ export const WelcomeSection = () => {
 						</p>
 						<div class='flex flex-col justify-center items-center'>
 							<button
-								class='pixel-btn py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg mb-2 w-full text-xl'
+								class='pixel-btn py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg mb-2 w-full text-lg'
 								onClick={() =>
 									document.getElementById('income')?.scrollIntoView({ behavior: 'smooth' })
 								}
@@ -26,7 +24,7 @@ export const WelcomeSection = () => {
 								Get Started
 							</button>
 							<span class='py-2 text-gray-400'>OR</span>
-							<button class='pixel-btn py-3 bg-gray-800 hover:bg-gray-900 text-white rounded-lg w-full text-xl'>
+							<button class='pixel-btn py-3 bg-gray-800 hover:bg-gray-900 text-white rounded-lg w-full text-lg'>
 								Login
 							</button>
 						</div>

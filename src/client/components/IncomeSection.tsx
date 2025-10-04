@@ -149,6 +149,16 @@ export const IncomeSection = () => {
 								<h3>${(formData.annualSalary * 0.2 * 0.8).toFixed(2)}</h3>
 							</div>
 						</SectionCard>
+						<div class='flex justify-center w-full'>
+							<button
+								class='pixel-btn px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg w-full'
+								onClick={() =>
+									document.getElementById('assets')?.scrollIntoView({ behavior: 'smooth' })
+								}
+							>
+								Next: Assets
+							</button>
+						</div>
 					</div>
 				</div>
 			</section>
